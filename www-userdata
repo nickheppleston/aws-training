@@ -1,0 +1,8 @@
+#!/bin/bash
+apt-get update
+apt-get -y upgrade
+apt-get -y install htop lighttpd php-cgi
+lighty-enable-mod fastcgi
+lighty-enable-mod fastcgi-php
+service lighttpd force-reload
+echo '<html><body><p>Date/Time: <strong><?php $now = new DateTime(); echo $now->format("Y-m-d @ H:i:s"); ?></strong></p><p>Hostname: <strong><?php print file_get_contents("http://169.254.169.254/latest/meta-data/hostname"); ?></strong></p></body></html>' > /var/www/html/index.php
