@@ -1,4 +1,6 @@
 #!/bin/bash
+# Remember that userdata scripts execute as root on Linux instances.
+# For more information about userdata, see http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html
 apt-get update
 apt-get -y upgrade
 apt-get -y install htop lighttpd php-cgi
