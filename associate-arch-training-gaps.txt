@@ -1,9 +1,0 @@
-1. PIOPS per GiB size
-2. Attaching an EBS volume across A-Z
-3. Read-up on Placement Groups
-4. Trusted Advisor - https://aws.amazon.com/premiumsupport/trustedadvisor/
-5. EBS-only back instance types
-6. CloudWatch minimum interval for data - 1 minute
-7. Consolidated Billing - two different types of account
-8. Key differences between EBS and instance-store backed volumes (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html)
-9. Are EC2 instances launched in a VPC assigned sequential Private IP addresses?
