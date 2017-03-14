@@ -17,6 +17,18 @@ For more information, see the EBS Volume Types documentation at: http://docs.aws
 *Question: Can an EBS volume residing in A-Z a be attached to an EC2 instance running in A-Z b?*
 *Question: Can an EBS volume residing in the EU(Ireland) region be attached to an EC2 instance running in EU(London)?*
 
+An EBS Volume is a durable, block-level storage device that can be attached to a single EC2 Instance. EBS Volumes persist independently from the lifecycle of an EC2 Instance. A volume incurs charges as long as data persists. 
+
+Data persists on the volume until the volume is explicitly deleted. After a volume is deleted, the physical block stoage used by the volume is over-written with zeroes before it is allocated to another account.
+
+When an EBS Volume is created within an A-Z, it is automatically replicated within that zone to prevent data loss resulting from hardware failure. An EBS Volume can only be attached to an EC2 Instance __in the same A-Z__. An EBS Volume can only be attached to one EC2 Instance at a time, but multiple volumes can be attached to a single EC2 Instance.
+
+When an instance is Terminated, an EBS Volume is automatically detached (however that behaviour can be changed if the _DeleteOnTermination_ flag is set to false); a volume remains attached during an instance stop-start cycle.
+
+EBS Volume encryption is supported through Amazon EBS Encryption, which offers transparent block-level encryption for all EBS Volume types. EBS Encryption has minimal impact on latency and customers can expect the same level of IOPS with an encrypted volume as they would with an unencrypted volume.
+
+Volumes can be monitored through CloudWatch at no additional charge.
+
 ## Placement Groups
 *Question: What are they, how are they used, are they cross-A-Z, cross-Region etc.*
 
