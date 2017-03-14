@@ -52,7 +52,20 @@ There is no charge for creating a Placement Group.
 
 ## Trusted Advisor
 *Question: What is it, what does it report on, what areas does it cover?*
+
 https://aws.amazon.com/premiumsupport/trustedadvisor/
+
+Inspects an AWS environment and makes recommendations based on the following areas:
+
+CPS-FT
+C - Cost Optimization
+P - Performance
+S - Security
+FT - Fault-Tolerance
+
+Available to all customers - Security and Performance (core checks)
+Available to customers with Business or Enterprise support plans (all checks)
+
 
 ## EBS-back Instances
 *Question: Which Instance Types are EBS-backed only?*
