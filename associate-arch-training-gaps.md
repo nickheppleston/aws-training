@@ -25,7 +25,7 @@ When an EBS Volume is created within an A-Z, it is automatically replicated with
 
 When an instance is Terminated, an EBS Volume is automatically detached (however that behaviour can be changed if the _DeleteOnTermination_ flag is set to false); a volume remains attached during an instance stop-start cycle.
 
-EBS Volume encryption is supported through Amazon EBS Encryption, which offers transparent block-level encryption for all EBS Volume types. EBS Encryption has minimal impact on latency and customers can expect the same level of IOPS with an encrypted volume as they would with an unencrypted volume.
+EBS Volume encryption is supported through Amazon EBS Encryption (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html), which offers transparent block-level encryption for all EBS Volume types. EBS Encryption has minimal impact on latency and customers can expect the same level of IOPS with an encrypted volume as they would with an unencrypted volume.
 
 Volumes can be monitored through CloudWatch at no additional charge.
 
