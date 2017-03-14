@@ -23,9 +23,19 @@ Data persists on the volume until the volume is explicitly deleted. After a volu
 
 When an EBS Volume is created within an A-Z, it is automatically replicated within that zone to prevent data loss resulting from hardware failure. An EBS Volume can only be attached to an EC2 Instance __in the same A-Z__. An EBS Volume can only be attached to one EC2 Instance at a time, but multiple volumes can be attached to a single EC2 Instance.
 
-When an instance is Terminated, an EBS Volume is automatically detached (however that behaviour can be changed if the _DeleteOnTermination_ flag is set to false); a volume remains attached during an instance stop-start cycle.
+When an instance is Terminated, an EBS Volume is automatically detached (however that behaviour can be changed if the _DeleteOnTermination_ flag is set to false through the CLI); a volume remains attached during an instance stop-start cycle.
 
-EBS Volume encryption is supported through Amazon EBS Encryption (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html), which offers transparent block-level encryption for all EBS Volume types. EBS Encryption has minimal impact on latency and customers can expect the same level of IOPS with an encrypted volume as they would with an unencrypted volume.
+__Encryption__
+
+EBS Volume encryption is supported through Amazon EBS Encryption (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html), which offers transparent block-level encryption for all EBS Volume types. EBS Encryption has minimal impact on latency and customers can expect the same level of IOPS with an encrypted volume as they would with an unencrypted volume.EBS Encryption automatically manages keys. Any snapshots created maintain the same level of encryption as the original volume, as do volumes created from those snapshots.
+
+__Snapshots__
+
+Snapshots of EBS Volumes (either attached to running EC2 Instances, or detached from EC2 Instances) can be taken and written to S3, where it is stored redundantly in multiple A-Z's _within the same region_. Snapshots are __incremental__ backups, meaning that only those blocks that have changed since the last snapshot are included in the latest snapshot. The Snapshot deletion process ensures that you only need to retain the most recent snapshot in order to recover the volume.
+
+Snapshots can be created in a different Availability-Zone to the original EBS Volume, allowing a duplicate Volume to be created in that new zone. Snapshots can be shared with AWS Accounts or made public. S3 charges apply to Snapshots at the standard rate based on the amount of data stored within the snapshot.
+
+Snapshots of encrypted EBS Volumes are also encrypted and any volume created from the snapshot will also be encrypted.
 
 Volumes can be monitored through CloudWatch at no additional charge.
 
