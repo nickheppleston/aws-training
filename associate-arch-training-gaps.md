@@ -115,5 +115,10 @@ Available to customers with Business or Enterprise support plans (all checks)
 *Question: What are the Key differences between EBS and instance-store backed volumes*
 http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html
 
+- EBS Volumes perserve their data between instance stops and terminations (with the necessary flags set); Instance Store Volumes do not.
+- EBS Volumes can be easily backed-up with EBS snapshots to durable S3 storage; data on Instance Store Volumes must employ a custom backup strategy.
+- EBS Volumes can be removed from one Instance and attached to another Instance; Instance Store Volumes cannot be detached/reattached.
+- EBS Volumes support full disk encryption using Amazon EBS Encyrption; Instance Store Volumes must be encrypted through the OS.
+
 ## VPC
 *Question: Are EC2 instances launched in a VPC assigned sequential Private IP addresses?*
