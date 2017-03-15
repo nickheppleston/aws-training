@@ -39,6 +39,45 @@ Snapshots of encrypted EBS Volumes are also encrypted and any volume created fro
 
 Volumes can be monitored through CloudWatch at no additional charge.
 
+## EBS-Backed Instances
+*Question: Which Instance Types are EBS-backed only?*
+
+The only instance types that are all EBS-backed are the *4 series (M4, C4, R4) and the T2 series. All other series are include instance store disks.
+
+The following EC2 Instance types are EBS-backed only:
+- T2
+- M4 (general purpose)
+- C4 (compute optimised)
+- R4 (memory optimised)
+
+The following EC2 Instance types are _not_ EBS-backed only:
+- M3 (general purpose)
+- C3 (compute optimised)
+- X1 (large-scale memory optimised)
+- R3 (memory optimised)
+- P2 (general purpose GPU compute)
+- G2 (graphics optimised)
+- F1 (customizable hardware acceleration)
+- I3 (high I/O optimised)
+- D2 (dense storage)
+
+## Ephemeral Disks / Instance Stores
+*Question: Does an Instance Store persist between a restart cycle? a start/stop cycle? a termination?*
+
+An Instance Store Volume provides temporary (ephemeral) block level storage. This storage is physically attached to the host compute on which a (virtualized) EC2 Instance runs.
+
+Instance Stores Volumes can only be specified at launch-time of an EC2 Instance. An Instance Store Volume can't be detached from one Instance and re-attached to another.
+
+An Instance Store Volume must be mounted and formatted before it can be used.
+
+The data help on an Instance Store Volume persists only for the life-time of the instance. It persists between an instance reboot, however it is lost under the following conditions:
+
+- The underlying (physically attached) disk fails
+- The Instance is stopped (in fact, the Instance Store Volume will not be present when the Instance is subsequently started)
+- The Instance is terminated
+
+Instance Stores Volumes are included in the hourly cost of the Instance.
+
 ## Placement Groups
 *Question: What are they, how are they used, are they cross-A-Z, cross-Region etc.*
 
@@ -65,29 +104,6 @@ FT - Fault-Tolerance
 
 Available to all customers - Security and Performance (core checks)
 Available to customers with Business or Enterprise support plans (all checks)
-
-
-## EBS-Backed Instances
-*Question: Which Instance Types are EBS-backed only?*
-
-The only instance types that are all EBS-backed are the *4 series (M4, C4, R4) and the T2 series. All other series are include instance store disks.
-
-The following EC2 Instance types are EBS-backed only:
-- T2
-- M4 (general purpose)
-- C4 (compute optimised)
-- R4 (memory optimised)
-
-The following EC2 Instance types are _not_ EBS-backed only:
-- M3 (general purpose)
-- C3 (compute optimised)
-- X1 (large-scale memory optimised)
-- R3 (memory optimised)
-- P2 (general purpose GPU compute)
-- G2 (graphics optimised)
-- F1 (customizable hardware acceleration)
-- I3 (high I/O optimised)
-- D2 (dense storage)
 
 ## CloudWatch
 *Question: What is the minimum interval for CloudWatch metrics?*
