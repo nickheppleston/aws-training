@@ -96,11 +96,11 @@ https://aws.amazon.com/premiumsupport/trustedadvisor/
 
 Inspects an AWS environment and makes recommendations based on the following areas:
 
-CPS-FT
-C - Cost Optimization
-P - Performance
-S - Security
-FT - Fault-Tolerance
+CPS+FT = 
+- C - Cost Optimization
+- P - Performance
+- S - Security
+- FT - Fault-Tolerance
 
 Available to all customers - Security and Performance (core checks)
 Available to customers with Business or Enterprise support plans (all checks)
