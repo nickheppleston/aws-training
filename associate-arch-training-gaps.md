@@ -67,8 +67,27 @@ Available to all customers - Security and Performance (core checks)
 Available to customers with Business or Enterprise support plans (all checks)
 
 
-## EBS-back Instances
+## EBS-Backed Instances
 *Question: Which Instance Types are EBS-backed only?*
+
+The only instance types that are all EBS-backed are the *4 series (M4, C4, R4) and the T2 series. All other series are include instance store disks.
+
+The following EC2 Instance types are EBS-backed only:
+- T2
+- M4 (general purpose)
+- C4 (compute optimised)
+- R4 (memory optimised)
+
+The following EC2 Instance types are _not_ EBS-backed only:
+- M3 (general purpose)
+- C3 (compute optimised)
+- X1 (large-scale memory optimised)
+- R3 (memory optimised)
+- P2 (general purpose GPU compute)
+- G2 (graphics optimised)
+- F1 (customizable hardware acceleration)
+- I3 (high I/O optimised)
+- D2 (dense storage)
 
 ## CloudWatch
 *Question: What is the minimum interval for CloudWatch metrics?*
