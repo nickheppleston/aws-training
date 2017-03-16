@@ -122,3 +122,12 @@ http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html
 
 ## VPC
 *Question: Are EC2 instances launched in a VPC assigned sequential Private IP addresses?*
+
+## S3 Performance Optimizations
+*Question:  You expect a bucket to immediately receive over 150 PUT requests per second. What should you do to ensure optimal performance?*
+
+If the AWS workload is likely to routinely exceed 100 PUT/LIST/DELETE operations per second or 300 GET operations per second, you should avoid sequential key-names; if it will only burst to these loads, S3 will scale automatically by partitioning buckets to handle these request rates.
+
+To avoid sequential key names, consider adding randomness as a prefix to the key-name; the randomness of the prefix more evently distributes key names across multiple index partitions.
+
+Workloads that are GET intensive, particularly on a single object, or a small number of objects, consider using a CloudFront Distribution to cache the object, thereby reducing the load on the S3 Bucket.
