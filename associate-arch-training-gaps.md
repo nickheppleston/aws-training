@@ -17,7 +17,7 @@ For more information, see the EBS Volume Types documentation at: http://docs.aws
 *Question: Can an EBS volume residing in A-Z a be attached to an EC2 instance running in A-Z b?*
 *Question: Can an EBS volume residing in the EU(Ireland) region be attached to an EC2 instance running in EU(London)?*
 
-An EBS Volume is a durable, block-level storage device that can be attached to a single EC2 Instance. EBS Volumes persist independently from the lifecycle of an EC2 Instance. A volume incurs charges as long as data persists. 
+An EBS Volume is a durable, block-level storage device that can be attached to a single EC2 Instance. EBS Volumes persist independently from the lifecycle of an EC2 Instance. A volume incurs charges as long as data persists. The maximum size for an EBS Volume is 16TiB.
 
 Data persists on the volume until the volume is explicitly deleted. After a volume is deleted, the physical block stoage used by the volume is over-written with zeroes before it is allocated to another account.
 
@@ -64,7 +64,7 @@ The following EC2 Instance types are _not_ EBS-backed only:
 ## Ephemeral Disks / Instance Stores
 *Question: Does an Instance Store persist between a restart cycle? a start/stop cycle? a termination?*
 
-An Instance Store Volume provides temporary (ephemeral) block level storage. This storage is physically attached to the host compute on which a (virtualized) EC2 Instance runs.
+An Instance Store Volume provides temporary (ephemeral) block level storage. This storage is physically attached to the host compute on which a (virtualized) EC2 Instance runs. The maximum size for a root device backed by an Instance Store Volume is 10GiB.
 
 Instance Stores Volumes can only be specified at launch-time of an EC2 Instance. An Instance Store Volume can't be detached from one Instance and re-attached to another.
 
