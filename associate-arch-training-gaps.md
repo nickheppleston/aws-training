@@ -131,3 +131,16 @@ If the AWS workload is likely to routinely exceed 100 PUT/LIST/DELETE operations
 To avoid sequential key names, consider adding randomness as a prefix to the key-name; the randomness of the prefix more evently distributes key names across multiple index partitions.
 
 Workloads that are GET intensive, particularly on a single object, or a small number of objects, consider using a CloudFront Distribution to cache the object, thereby reducing the load on the S3 Bucket.
+
+
+
+Further Questions:
+
+*Q: For HA of S3, is it possible to replicate across regions?*
+*Q: When the creation of an EBS snapshot is initiated, but not completed, the EBS volume: Can be used while the snapshot is in progress?*
+*Q: Confirm the /16 /24 /26 and /32 CIDR ranges*
+*Q: What is an Amazon PV AMI / HVM AMI*
+*Q: What are the possible event notifications for S3 buckets???*
+*Q: What is the size limit for an Instance Store Volume*
+*Q: Read up on federated identity for IAM / AD*
+*Q: Max number of object that can be deleted in a single S3 bulk delete request?*
