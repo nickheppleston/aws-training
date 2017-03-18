@@ -161,10 +161,10 @@ Replication cannot occur between two buckets in the SAME Region.
 
 *Q: What are the typical CIDR Address Blocks used by AWS, specifically the /16, /24, /26, /32 ranges?*
 
-/16 = 65,536 Addresses - Maximum address space of a VPC
-/24 = 256 Addresses - Typically the address space for a subnet
-/26 = 64 Addresses - Typically the address space for a subnet
-/32 = 1 Address - Address space of a single host.
+- /16 = 65,536 Addresses - Maximum address space of a VPC
+- /24 = 256 Addresses - Typically the address space for a subnet
+- /26 = 64 Addresses - Typically the address space for a subnet
+- /32 = 1 Address - Address space of a single host.
 
 ## EC2 Instances
 
@@ -192,3 +192,7 @@ One of two protocols can be used for federated identity:
 - Web Identity Federation (supports OpenID Connect, e.g. Google, Amazon & Facebook) - typically used for mobile access and the federated credentials map to an AWS Role.
 - SAML 2.0 based federation - Provides credential mapping to AWS Roles and to allow SSO into the AWS Console.
 
+
+## VPC
+
+*Question: What are the VPC limits?* http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html
