@@ -159,8 +159,14 @@ Replication cannot occur between two buckets in the SAME Region.
 
 **Event Notifications for S3 Buckets**
 
-*Q: What are the possible event notifications for S3 buckets???*
+*Q: What are the possible event notifications for S3 buckets?*
 
+New Object notifications can be triggered by S3 to one of three possible endpoints:
+- SQS
+- SNS
+- Lambda
+
+Object notifications are generated when new objects are created (either through PUT or POST operations, through an S3 COPY operation, after a multi-part upload completes and when an RRS Object is lost.
 
 
 ## CIDR Addres Blocks
