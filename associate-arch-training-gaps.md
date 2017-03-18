@@ -151,11 +151,17 @@ Cross-Region Replication can either copy all objects in a bucket or only those w
 
 Replication cannot occur between two buckets in the SAME Region.
 
-** Bulk S3 Object Delete **
+**Bulk S3 Object Delete**
 
 *Q: Max number of object that can be deleted in a single S3 bulk delete request?*
 
 1000
+
+**Event Notifications for S3 Buckets**
+
+*Q: What are the possible event notifications for S3 buckets???*
+
+
 
 ## CIDR Addres Blocks
 
@@ -177,8 +183,6 @@ HVM uses hypervisor style interface, with the virtual machine interacting with a
 PV virtual machines on the other-hand run directly on hardware that does not have specific support for virtualization, but they cannot take advantage of enhanced networking and GPU processing.
 
 All current versions of EC2 Instances support HVM as the AMI. Amazon reccommend that HVM based AMI's are used for best performance.
-
-*Q: What are the possible event notifications for S3 buckets???*
 
 ## IAM & Federated Identity
 
