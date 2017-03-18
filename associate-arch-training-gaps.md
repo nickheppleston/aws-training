@@ -195,4 +195,10 @@ One of two protocols can be used for federated identity:
 
 ## VPC
 
-*Question: What are the VPC limits?* http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html
+*Question: What are the VPC limits?* 
+
+http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html
+
+A VPC can be created with a CIDR range between /28 (16 addresses) and /16 (65,536 addresses)
+
+The first four addresses and the last address within a subnet are reserved by AWS and are not available for use.
