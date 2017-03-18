@@ -39,6 +39,8 @@ Snapshots of encrypted EBS Volumes are also encrypted and any volume created fro
 
 Volumes can be monitored through CloudWatch at no additional charge.
 
+Snapshots occur asynchronously; the point-in-time snapshot is created immediately, but the snapshot is not complete until all modified blocks have been transferred to S3. A snapshot is not affected by on-going EBS reads and writes to the volume.
+
 ## EBS-Backed Instances
 *Question: Which Instance Types are EBS-backed only?*
 
@@ -123,7 +125,9 @@ http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html
 ## VPC
 *Question: Are EC2 instances launched in a VPC assigned sequential Private IP addresses?*
 
-## S3 Performance Optimizations
+## S3 - Simple Storage Service
+
+**Performance**
 *Question:  You expect a bucket to immediately receive over 150 PUT requests per second. What should you do to ensure optimal performance?*
 
 If the AWS workload is likely to routinely exceed 100 PUT/LIST/DELETE operations per second or 300 GET operations per second, you should avoid sequential key-names; if it will only burst to these loads, S3 will scale automatically by partitioning buckets to handle these request rates.
@@ -132,12 +136,18 @@ To avoid sequential key names, consider adding randomness as a prefix to the key
 
 Workloads that are GET intensive, particularly on a single object, or a small number of objects, consider using a CloudFront Distribution to cache the object, thereby reducing the load on the S3 Bucket.
 
+**Replication Across Regions**
+*Question: For HA of S3, is it possible to replicate across regions?*
 
+AWS S3 supports Cross-Region Replication at the Bucket Level. Once enabled on a Bucket, every object uploaded will be replciated to its destination region & bucket in the configured replication region. Replication only replicates NEW Objects uploaded - it will not replicate current Objects in the source bucket.
 
-Further Questions:
+The Storage Class in the source bucket (i.e. RRS), encryption state (i.e. SSE), ACL's and metadata are additionally copied during the replication.
 
-*Q: For HA of S3, is it possible to replicate across regions?*
-*Q: When the creation of an EBS snapshot is initiated, but not completed, the EBS volume: Can be used while the snapshot is in progress?*
+Cross-Region Replication is built on top of S3 Object Version, which must be enabled. Additionally requires an IAM Role that can List and retrieve Objects from the source bucket and replicate to the destination bucket.
+
+Cross-Region Replication can either copy all objects in a bucket or only those with a specific prefix.
+
+x*
 *Q: Confirm the /16 /24 /26 and /32 CIDR ranges*
 *Q: What is an Amazon PV AMI / HVM AMI*
 *Q: What are the possible event notifications for S3 buckets???*
