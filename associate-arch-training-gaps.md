@@ -139,13 +139,15 @@ Workloads that are GET intensive, particularly on a single object, or a small nu
 **Replication Across Regions**
 *Question: For HA of S3, is it possible to replicate across regions?*
 
-AWS S3 supports Cross-Region Replication at the Bucket Level. Once enabled on a Bucket, every object uploaded will be replciated to its destination region & bucket in the configured replication region. Replication only replicates NEW Objects uploaded - it will not replicate current Objects in the source bucket.
+AWS S3 supports Cross-Region Replication at the Bucket Level. Once enabled on a Bucket, every object uploaded will be replciated to its destination region & bucket in the configured replication region. Replication only replicates NEW or CHANGED Objects - it will not replicate current Objects in the source bucket.
 
 The Storage Class in the source bucket (i.e. RRS), encryption state (i.e. SSE), ACL's and metadata are additionally copied during the replication.
 
 Cross-Region Replication is built on top of S3 Object Version, which must be enabled. Additionally requires an IAM Role that can List and retrieve Objects from the source bucket and replicate to the destination bucket.
 
 Cross-Region Replication can either copy all objects in a bucket or only those with a specific prefix.
+
+Replication cannot occur between two buckets in the SAME Region.
 
 x*
 *Q: Confirm the /16 /24 /26 and /32 CIDR ranges*
