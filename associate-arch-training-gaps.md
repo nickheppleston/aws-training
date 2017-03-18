@@ -128,6 +128,7 @@ http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html
 ## S3 - Simple Storage Service
 
 **Performance**
+
 *Question:  You expect a bucket to immediately receive over 150 PUT requests per second. What should you do to ensure optimal performance?*
 
 If the AWS workload is likely to routinely exceed 100 PUT/LIST/DELETE operations per second or 300 GET operations per second, you should avoid sequential key-names; if it will only burst to these loads, S3 will scale automatically by partitioning buckets to handle these request rates.
@@ -137,6 +138,7 @@ To avoid sequential key names, consider adding randomness as a prefix to the key
 Workloads that are GET intensive, particularly on a single object, or a small number of objects, consider using a CloudFront Distribution to cache the object, thereby reducing the load on the S3 Bucket.
 
 **Replication Across Regions**
+
 *Question: For HA of S3, is it possible to replicate across regions?*
 
 AWS S3 supports Cross-Region Replication at the Bucket Level. Once enabled on a Bucket, every object uploaded will be replciated to its destination region & bucket in the configured replication region. Replication only replicates NEW or CHANGED Objects - it will not replicate current Objects in the source bucket.
@@ -149,10 +151,44 @@ Cross-Region Replication can either copy all objects in a bucket or only those w
 
 Replication cannot occur between two buckets in the SAME Region.
 
-x*
-*Q: Confirm the /16 /24 /26 and /32 CIDR ranges*
-*Q: What is an Amazon PV AMI / HVM AMI*
-*Q: What are the possible event notifications for S3 buckets???*
-*Q: What is the size limit for an Instance Store Volume*
-*Q: Read up on federated identity for IAM / AD*
+** Bulk S3 Object Delete **
+
 *Q: Max number of object that can be deleted in a single S3 bulk delete request?*
+
+1000
+
+## CIDR Addres Blocks
+
+*Q: What are the typical CIDR Address Blocks used by AWS, specifically the /16, /24, /26, /32 ranges?*
+
+/16 = 65,536 Addresses - Maximum address space of a VPC
+/24 = 256 Addresses - Typically the address space for a subnet
+/26 = 64 Addresses - Typically the address space for a subnet
+/32 = 1 Address - Address space of a single host.
+
+## EC2 Instances
+
+*Question: What is the difference between a Amazon PV AMI / HVM AMI*
+
+EC2 Instances use one of two virtualization technologies - Paravirtual (PV) or Hardware Virtual Machine (HVM). Their main difference is the way in which they boot and can take advantage of special hardware (CPU, network and storage) for better performance. 
+
+HVM uses hypervisor style interface, with the virtual machine interacting with a fully virtualized set of hardware presented by the hypervisor. HVM virtual machines can take advantage of enhanced networking and GPU processing, provided by HVM.
+
+PV virtual machines on the other-hand run directly on hardware that does not have specific support for virtualization, but they cannot take advantage of enhanced networking and GPU processing.
+
+All current versions of EC2 Instances support HVM as the AMI. Amazon reccommend that HVM based AMI's are used for best performance.
+
+*Q: What are the possible event notifications for S3 buckets???*
+
+## IAM & Federated Identity
+
+*Q: Read up on federated identity for IAM / AD*
+
+If a company already manages users outside of AWS, it can use *IAM Identity Providers* instead of using IAM Users. These external users can be given permissions in an AWS Account from within the federated system. A trust relationship must be created between the Identity Provider and the AWS Account.
+
+Typically, federated users will either assume a particular role (by being given a temporary Access Key and Secret Access Key) or perform SSO into the AWS Management Console.
+
+One of two protocols can be used for federated identity:
+- Web Identity Federation (supports OpenID Connect, e.g. Google, Amazon & Facebook) - typically used for mobile access and the federated credentials map to an AWS Role.
+- SAML 2.0 based federation - Provides credential mapping to AWS Roles and to allow SSO into the AWS Console.
+
