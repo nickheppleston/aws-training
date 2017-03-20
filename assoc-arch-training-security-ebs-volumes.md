@@ -66,6 +66,11 @@ Volumes can be monitored through CloudWatch at no additional charge.
 
 Snapshots occur asynchronously; the point-in-time snapshot is created immediately, but the snapshot is not complete until all modified blocks have been transferred to S3. A snapshot is not affected by on-going EBS reads and writes to the volume.
 
+To snapshot a RAID array, use one of the following approaches:
+- Pause the array and then take the snapshot
+- Unmount the array and then take the snapshot
+- Shutdown the EC2 Instance and then take the snapshot
+
 ## EBS Backed Instances
 
 The only instance types that are all EBS-backed are the *4 series (M4, C4, R4) and the T2 series. All other series are include instance store disks.
