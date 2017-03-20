@@ -58,7 +58,7 @@ EBS Volume encryption is supported through Amazon EBS Encryption (http://docs.aw
 
 Snapshots of EBS Volumes (either attached to running EC2 Instances, or detached from EC2 Instances) can be taken and written to S3, where it is stored redundantly in multiple A-Z's within the same region. Snapshots are incremental backups, meaning that only those blocks that have changed since the last snapshot are included in the latest snapshot. The Snapshot deletion process ensures that you only need to retain the most recent snapshot in order to recover the volume.
 
-Snapshots can be created in a different Availability-Zone to the original EBS Volume, allowing a duplicate Volume to be created in that new zone. Snapshots can be shared with AWS Accounts or made public. S3 charges apply to Snapshots at the standard rate based on the amount of data stored within the snapshot. Alternatively, a Snapshot can be copied to another region for redundancy.
+Snapshots can be created in a different Availability-Zone to the original EBS Volume, allowing a duplicate Volume to be created in that new zone. Snapshots can be shared with AWS Accounts or made public. S3 charges apply to Snapshots at the standard rate based on the amount of data stored within the snapshot. Alternatively, a Snapshot can be copied to another region for redundancy (and can be encrypted when it is copied).
 
 Snapshots of encrypted EBS Volumes are also encrypted and any volume created from the snapshot will also be encrypted.
 
