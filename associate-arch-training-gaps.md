@@ -23,11 +23,13 @@ Instance Stores Volumes are included in the hourly cost of the Instance.
 ## Placement Groups
 *Question: What are they, how are they used, are they cross-A-Z, cross-Region etc.*
 
-A _Placement Group_ is a logical grouping of EC2 Instances within a single Availability-Zone. They are recommended for instances that benefit high network throughput, low network latency, or both. The instance type MUST support __Enhanced Networking__.
+A _Placement Group_ is a logical grouping of EC2 Instances within a single Availability-Zone. They are recommended for instances that benefit high network throughput, low network latency, 10Gbs network, or both. The instance type MUST support __Enhanced Networking__.
 
 A Placement Group is created and then instances are launched into it. AWS recommend that instances are launched together in a single launch request and that the same Instance Type is used. An 'Insufficient Capacity Error' may be thrown if an instance is subsequently launched or if a different Instance Type is launched at a later date/time.
 
 Placement Groups can't span multiple Availability-Zones.
+
+Only certain instance types can be deployed to a Placement Group - e.g. Compute Optimized, Memory Optimized, Storage Optimized, GPU etc. AWS recommends the same type and size of instances in a PG. An existing instance can't be moved into a PG. Placement Groups can't be merged.
 
 There is no charge for creating a Placement Group.
 
